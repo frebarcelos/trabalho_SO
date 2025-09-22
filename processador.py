@@ -29,11 +29,12 @@ class Processador ():
                 self.processoEmExecusao = self.listaProcessosEmEspera[0]
                 self.listaProcessosEmEspera.pop(0)                       
             
-            if self.processoEmExecusao != None:                
-                print(f"Tempo {self.tempoAtual}: Executando processo {self.processoEmExecusao.nome} processos na fila: {[p.nome for p in self.listaProcessosEmEspera]}")
+            if self.processoEmExecusao != None:  
+                ptNumberExecution = self.processoEmExecusao.pt - self.processoEmExecusao.rt + 1              
+                print(f"Tempo {self.tempoAtual}: Executando processo {self.processoEmExecusao.nome} {ptNumberExecution}/{self.processoEmExecusao.pt} processos na fila: {['nome: ' + p.nome + ( f" prioridade: {p.pr}" if prioridade else '') for p in self.listaProcessosEmEspera]}")
                 self.processoEmExecusao.rt -= 1                    
                 if self.processoEmExecusao.rt == 0:
-                    print("Processo finalizado")
+                    print("Finalizado processo ", self.processoEmExecusao.nome)
                     self.processoEmExecusao.tt = self.tempoAtual + 1 - self.processoEmExecusao.at
                     self.processoEmExecusao.wt = self.processoEmExecusao.tt - self.processoEmExecusao.pt 
                     self.listaProcessosFinalizados.append(self.processoEmExecusao)                
