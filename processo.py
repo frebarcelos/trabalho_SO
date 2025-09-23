@@ -1,11 +1,11 @@
 class Processo ():
     nome = ''
-    at = 0  
-    pt = 0
-    pr = 0
-    rt = 0
-    wt = 0
-    tt = 0   
+    at = 0  #Tempo de chegada
+    pt = 0  #Tempo de processamento
+    pr = 0  #prioridade
+    rt = 0  #Tempo restante
+    wt = 0  #Tempo de espera
+    tt = 0  #Tempo total 
     
     def __init__(self, nome, at, pt, pr):
         self.nome = nome  
